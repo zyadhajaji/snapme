@@ -1,5 +1,31 @@
 // Global variables
-	// Add this at the top
+	const AD_TIMEOUT = 30000;
+	const SKIP_TIMEOUT = 10000;
+	function showAd(videoLink) {
+	  const adContainer = document.getElementById('adContainer');
+	  const skipBtn = document.getElementById('skipAdBtn');
+	  // Reset previous state
+	  if (adContainer.style.display !== 'none') {
+	    adContainer.style.display = 'none';
+	  }
+	  // Show ad
+	  adContainer.style.display = 'block';
+	  adContainer.dataset.videoLink = videoLink;
+	  // Ad timer
+	  let timer = setTimeout(() => {
+	    completeAd(videoLink);
+	  }, AD_TIMEOUT);
+	  // Skip button handler
+	  skipBtn.style.display = 'inline-block';
+	  skipBtn.onclick = () => {
+	    clearTimeout(timer);
+	    completeAd(videoLink);
+	  };
+	}
+	function completeAd(videoLink) {
+	  document.getElementById('adContainer').style.display = 'none';
+	  window.open(videoLink, '_blank');
+	}/ Add this at the top
 	const FAQ_ANIMATION_DURATION = 300;
 	function showOptions() {
 	  const url = document.getElementById('tiktokUrl').value.trim();
