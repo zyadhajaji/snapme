@@ -140,6 +140,16 @@ header h1 {
   font-size: 18px;
 }
 /* FAQ SECTION */
+	/* Fix for FAQ animation */
+.faq-item p {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+ }
+.faq-item.active p {
+  max-height: 300px;
+  opacity: 1;
+	}
 .faq {
   max-width: 900px;
   margin: 40px auto;
