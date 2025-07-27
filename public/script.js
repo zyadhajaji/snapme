@@ -102,6 +102,25 @@
 	  window.open(videoLink, '_blank');
 	}
 	// FAQ System
+function toggleFAQ(element) {
+  const faqItem = element.parentElement;
+  const content = faqItem.querySelector('p');
+  
+  // Close all other FAQs
+  document.querySelectorAll('.faq-item').forEach(item => {
+    if (item !== faqItem) {
+      item.classList.remove('active');
+      item.querySelector('p').style.maxHeight = '0';
+    }
+  });
+ 
+  faqItem.classList.toggle('active');
+  if (faqItem.classList.contains('active')) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+  } else {
+    content.style.maxHeight = '0';
+  }
+}
 	document.addEventListener('DOMContentLoaded', () => {
 	  document.querySelectorAll('.faq-item').forEach(item => {
 	    const question = item.querySelector('h3');
